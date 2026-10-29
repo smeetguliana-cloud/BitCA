@@ -203,7 +203,7 @@ export const CinematicScene: React.FC<CinematicSceneProps> = ({
   onCameraUpdate
 }) => {
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-auto">
+    <div className="relative w-full h-full pointer-events-auto overflow-hidden">
       <Canvas
         camera={{ position: [0, 18, 55], fov: 60, near: 0.1, far: 800 }}
         gl={{
@@ -211,7 +211,7 @@ export const CinematicScene: React.FC<CinematicSceneProps> = ({
           alpha: false,
           powerPreference: 'high-performance'
         }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <color attach="background" args={['#02040b']} />
         <fog attach="fog" args={['#02040b', 70, 260]} />

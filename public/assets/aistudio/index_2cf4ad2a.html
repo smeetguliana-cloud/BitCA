@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MULTIVERSE 404 | Reality Not Found</title>
+<!-- Added Google Fonts to match the clean, bold typography in the video -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- Three.js for 3D Model -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<!-- Custom Cursor Elements -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div aria-hidden="true" class="scroll-progress" id="scrollProgress"></div>
+<!-- Navigation -->
+<header class="navbar">
+<a class="brand hover-target" href="#home">
+<span class="logo">B.</span>
+<span>BitCA <small>TECH CLUB v2.4</small></span>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-btn hover-target" id="menuBtn">☰</button>
+<nav class="nav-links" id="navLinks">
+<a class="hover-target" href="#home">Home</a>
+<a class="hover-target" href="#about">About</a>
+<a class="hover-target" href="#incharges">Incharges</a>
+<a class="hover-target" href="#faculty">Faculty</a>
+<a class="hover-target" href="#team">Head Team</a>
+<a class="hover-target" href="#departments">HODs</a>
+<a class="hover-target" href="#universes">Events</a>
+</nav>
+<a class="button nav-button hover-target" href="#universes">Enter Multiverse ↗</a>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="hero-content reveal">
+<span class="tag">Visionexa 2025 &amp; 2026</span>
+<h1>MULTIVERSE 404</h1>
+<h2 class="subtitle">REALITY <span>NOT FOUND.</span></h2>
+<p>
+          In a world where AI can generate content and predict behavior, how do we preserve our individuality? 
+          Explore the intersection of tech, culture, and humanity. 
+        </p>
+<p class="hero-subtext">When your mirror starts thinking, is it still a reflection?</p>
+<div class="hero-buttons">
+<a class="button hover-target" href="#universes">Explore the 7 Dimensions ↗</a>
+</div>
+</div>
+<!-- 3D Model Container -->
+<div class="hero-art reveal">
+<div id="canvas-container"></div>
+</div>
+</section>
+<!-- About Section -->
+<section class="section about-section scroll-scene" data-scene="about" id="about">
+<div class="section-heading reveal">
+<span class="eyebrow">01 / ABOUT BITCA</span>
+<h2>Where innovation meets <span>collaboration.</span></h2>
+</div>
+<div class="about-content reveal"><div aria-hidden="true" class="about-side-label">BITCA / 2.4</div><div class="about-copy">
+<p>
+          BitCA v2.4 is the official tech club of the Department of Computer Applications at K.C. College, under HSNC University. 
+          We are a community of passionate tech enthusiasts dedicated to exploring the ever-evolving world of technology, with a primary 
+          focus on Artificial Intelligence, emerging technologies, and hands-on technical learning. 
+        </p>
+<p>
+          We regularly organize interactive workshops, seminars, and events on topics like AI, Cybersecurity, Web Development, and Data Science. 
+          At BitCA, we encourage innovation and knowledge sharing to prepare students for the tech-driven future. 
+          Whether you're a beginner or an advanced learner, BitCA is the place for you to innovate, explore, and create.
+        </p></div>
+</div>
+</section>
+<!-- Incharges Section -->
+<section class="section features-section guides-section scroll-scene layout-portrait" data-scene="guides" id="incharges">
+<div class="section-heading reveal">
+<span class="eyebrow">02 / OUR GUIDES</span>
+<h2>The <span>Guiding Hands</span> of our club</h2>
+</div>
+<div class="person-grid">
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Dr. Tejashree V. Shanbhag" class="person-photo-img" loading="lazy" src="images/people/dr-tejashree-v-shanbhag.jpg"/><span aria-hidden="true" class="photo-fallback">TS</span></div>
+<h3>Dr. Tejashree V. Shanbhag</h3>
+<p>I/C Principal, K.C. College</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Dr. Hemlata K. Baghla" class="person-photo-img" loading="lazy" src="images/people/dr-hemlata-k-baghla.jpg"/><span aria-hidden="true" class="photo-fallback">HB</span></div>
+<h3>Dr. Hemlata K. Baghla</h3>
+<p>Vice Chancellor, HSNC University</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Dr. Shalini R. Sinha" class="person-photo-img" loading="lazy" src="images/people/dr-shalini-r-sinha.jpg"/><span aria-hidden="true" class="photo-fallback">SS</span></div>
+<h3>Dr. Shalini R. Sinha</h3>
+<p>Vice-Principal</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Dr. Rajesh Samant" class="person-photo-img" loading="lazy" src="images/people/dr-rajesh-samant.jpg"/><span aria-hidden="true" class="photo-fallback">RS</span></div>
+<h3>Dr. Rajesh Samant</h3>
+<p>Vice-Principal</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Dr. Ritika Pathak" class="person-photo-img" loading="lazy" src="images/people/dr-ritika-pathak.jpg"/><span aria-hidden="true" class="photo-fallback">RP</span></div>
+<h3>Dr. Ritika Pathak</h3>
+<p>Vice-Principal</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Ms. Geeta Brijwani" class="person-photo-img" loading="lazy" src="images/people/ms-geeta-brijwani.jpg"/><span aria-hidden="true" class="photo-fallback">GB</span></div>
+<h3>Ms. Geeta Brijwani</h3>
+<p>Coordinator for BCA</p>
+</article>
+</div>
+</section>
+<!-- Teaching and Non-Teaching Faculty -->
+<section class="section faculty-section scroll-scene layout-faculty" data-scene="faculty" id="faculty">
+<div class="section-heading reveal">
+<span class="eyebrow">03 / OUR FACULTY</span>
+<h2>The people who <span>support our learning.</span></h2>
+<p>Meet the teaching and non-teaching faculty who support the Department of Computer Applications.</p>
+</div>
+<div class="faculty-group">
+<div class="faculty-group-heading reveal">
+<span class="faculty-index">03.1</span>
+<div>
+<h3>Teaching Faculty</h3>
+<p>Guidance, knowledge, and learning.</p>
+</div>
+</div>
+<div class="person-grid faculty-grid">
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Divya Menon" class="person-photo-img" loading="lazy" src="images/people/divya-menon.jpg"/><span aria-hidden="true" class="photo-fallback">DM</span></div>
+<h3>Divya Menon</h3>
+<p>Teaching Faculty</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Shahid Ansari" class="person-photo-img" loading="lazy" src="images/people/shahid-ansari.jpg"/><span aria-hidden="true" class="photo-fallback">SA</span></div>
+<h3>Shahid Ansari</h3>
+<p>Teaching Faculty</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Maunash Jani" class="person-photo-img" loading="lazy" src="images/people/maunash-jani.jpg"/><span aria-hidden="true" class="photo-fallback">MJ</span></div>
+<h3>Maunash Jani</h3>
+<p>Teaching Faculty</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Ismail H.P" class="person-photo-img" loading="lazy" src="images/people/ismail-h-p.jpg"/><span aria-hidden="true" class="photo-fallback">IH</span></div>
+<h3>Ismail H.P</h3>
+<p>Teaching Faculty</p>
+</article>
+</div>
+</div>
+<div class="faculty-group non-teaching-group">
+<div class="faculty-group-heading reveal">
+<span class="faculty-index">03.2</span>
+<div>
+<h3>Non-Teaching Faculty</h3>
+<p>The people who help everything run smoothly.</p>
+</div>
+</div>
+<div class="person-grid faculty-grid">
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Ashsih Gawde" class="person-photo-img" loading="lazy" src="images/people/ashsih-gawde.jpg"/><span aria-hidden="true" class="photo-fallback">AG</span></div>
+<h3>Ashsih Gawde</h3>
+<p>Non-Teaching Faculty</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Rakesh Sharma" class="person-photo-img" loading="lazy" src="images/people/rakesh-sharma.jpg"/><span aria-hidden="true" class="photo-fallback">RS</span></div>
+<h3>Rakesh Sharma</h3>
+<p>Non-Teaching Faculty</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Aditya Pandey" class="person-photo-img" loading="lazy" src="images/people/aditya-pandey.jpg"/><span aria-hidden="true" class="photo-fallback">AP</span></div>
+<h3>Aditya Pandey</h3>
+<p>Non-Teaching Faculty</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Head Team Section -->
+<section class="section team-section scroll-scene layout-leadership" data-scene="team" id="team">
+<div class="section-heading reveal">
+<span class="eyebrow">04 / HEAD TEAM</span>
+<h2>The <span>Leaders</span> of the club</h2>
+</div>
+<div class="person-grid">
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Aadil Khan" class="person-photo-img" loading="lazy" src="images/people/aadil-khan.jpg"/><span aria-hidden="true" class="photo-fallback">AK</span></div>
+<h3>Pratham Shikotra</h3>
+<p>Core Member</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Khushi Parmar" class="person-photo-img" loading="lazy" src="images/people/khushi-parmar.jpg"/><span aria-hidden="true" class="photo-fallback">KP</span></div>
+<h3>Yashvi Mehta</h3>
+<p>Core Member</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Rukaiya Mithaiwala" class="person-photo-img" loading="lazy" src="images/people/rukaiya-mithaiwala.jpg"/><span aria-hidden="true" class="photo-fallback">RM</span></div>
+<h3>Sumaiya Khan</h3>
+<p>Core Member</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Kritika Penta" class="person-photo-img" loading="lazy" src="images/people/kritika-penta.jpg"/><span aria-hidden="true" class="photo-fallback">KP</span></div>
+<h3>Shreya Chindarkar</h3>
+<p>Core Member</p>
+</article>
+</div>
+</section>
+<!-- Heads of Department Section -->
+<section class="section department-heads-section scroll-scene layout-directory" data-scene="departments" id="departments">
+<div class="section-heading reveal">
+<span class="eyebrow">05 / HEADS OF DEPARTMENT</span>
+<h2>Teams with <span>purpose.</span></h2>
+<p>The student leads and department teams that help bring BitCA activities to life.</p>
+</div>
+<div class="person-grid department-heads-grid">
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Zafreen Pithawala" class="person-photo-img" loading="lazy" src="images/people/zafreen-pithawala.jpg"/><span aria-hidden="true" class="photo-fallback">ZP</span></div><h3>Zafreen Pithawala</h3><p>Social Media</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Mayuresh Pandey" class="person-photo-img" loading="lazy" src="images/people/mayuresh-pandey.jpg"/><span aria-hidden="true" class="photo-fallback">MP</span></div><h3>Mayuresh Pandey</h3><p>Social Media</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Shania Gomez" class="person-photo-img" loading="lazy" src="images/people/shania-gomez.jpg"/><span aria-hidden="true" class="photo-fallback">SG</span></div><h3>Shania Gomez</h3><p>Technical</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Samuel Bhowmik" class="person-photo-img" loading="lazy" src="images/people/samuel-bhowmik.jpg"/><span aria-hidden="true" class="photo-fallback">SB</span></div><h3>Samuel Bhowmik</h3><p>Technical</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Riya Ramane" class="person-photo-img" loading="lazy" src="images/people/riya-ramane.jpg"/><span aria-hidden="true" class="photo-fallback">RR</span></div><h3>Riya Ramane</h3><p>Decor</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Kainaat Sayyed" class="person-photo-img" loading="lazy" src="images/people/kainaat-sayyed.jpg"/><span aria-hidden="true" class="photo-fallback">KS</span></div><h3>Kainaat Sayyed</h3><p>Administration</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Vedant Darji" class="person-photo-img" loading="lazy" src="images/people/vedant-darji.jpg"/><span aria-hidden="true" class="photo-fallback">VD</span></div><h3>Vedant Darji</h3><p>Security</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Sanjivani Pandey" class="person-photo-img" loading="lazy" src="images/people/sanjivani-pandey.jpg"/><span aria-hidden="true" class="photo-fallback">SP</span></div><h3>Sanjivani Pandey</h3><p>Security</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Aditya Erande" class="person-photo-img" loading="lazy" src="images/people/aditya-erande.jpg"/><span aria-hidden="true" class="photo-fallback">AE</span></div><h3>Aditya Erande</h3><p>Security</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Aafridi Choudhari" class="person-photo-img" loading="lazy" src="images/people/aafridi-choudhari.jpg"/><span aria-hidden="true" class="photo-fallback">AC</span></div><h3>Aafridi Choudhari</h3><p>Logistics</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Majid Shaikh" class="person-photo-img" loading="lazy" src="images/people/majid-shaikh.jpg"/><span aria-hidden="true" class="photo-fallback">MS</span></div><h3>Majid Shaikh</h3><p>Logistics</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Anas Ansari" class="person-photo-img" loading="lazy" src="images/people/anas-ansari.jpg"/><span aria-hidden="true" class="photo-fallback">AA</span></div><h3>Anas Ansari</h3><p>Logistics</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Rabab Kanwarsaheb" class="person-photo-img" loading="lazy" src="images/people/rabab-kanwarsaheb.jpg"/><span aria-hidden="true" class="photo-fallback">RK</span></div><h3>Rabab Kanwarsaheb</h3><p>Hospitality</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Arpit Choubey" class="person-photo-img" loading="lazy" src="images/people/arpit-choubey.jpg"/><span aria-hidden="true" class="photo-fallback">AC</span></div><h3>Arpit Choubey</h3><p>Editing and Graphic Designing</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Uddish Bakshi" class="person-photo-img" loading="lazy" src="images/people/uddish-bakshi.jpg"/><span aria-hidden="true" class="photo-fallback">UB</span></div><h3>Uddish Bakshi</h3><p>Editing and Graphic Designing</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Kavyam Shah" class="person-photo-img" loading="lazy" src="images/people/kavyam-shah.jpg"/><span aria-hidden="true" class="photo-fallback">KS</span></div><h3>Kavyam Shah</h3><p>Marketing and PR</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Anchal Kaur" class="person-photo-img" loading="lazy" src="images/people/anchal-kaur.jpg"/><span aria-hidden="true" class="photo-fallback">AK</span></div><h3>Anchal Kaur</h3><p>Marketing and PR</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Riya Raisinghani" class="person-photo-img" loading="lazy" src="images/people/riya-raisinghani.jpg"/><span aria-hidden="true" class="photo-fallback">RR</span></div><h3>Riya Raisinghani</h3><p>Creative Writing</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Ishaan Keluskar" class="person-photo-img" loading="lazy" src="images/people/ishaan-keluskar.jpg"/><span aria-hidden="true" class="photo-fallback">IK</span></div><h3>Ishaan Keluskar</h3><p>Coverage</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Shreyash Toraskar" class="person-photo-img" loading="lazy" src="images/people/shreyash-toraskar.jpg"/><span aria-hidden="true" class="photo-fallback">ST</span></div><h3>Shreyash Toraskar</h3><p>Coverage</p>
+</article>
+<article class="person-card interactive-card hover-target reveal">
+<div class="person-photo-wrap"><img alt="Photo of Pushkar Umesh Modak" class="person-photo-img" loading="lazy" src="images/people/pushkar-umesh-modak.jpg"/><span aria-hidden="true" class="photo-fallback">PM</span></div><h3>Pushkar Umesh Modak</h3><p>Editing</p>
+</article>
+</div>
+</section>
+<!-- INTERACTIVE MULTIVERSE: seven rotating 3D worlds -->
+<section class="section features-section universes-section scroll-scene layout-universes" data-scene="universes" id="universes">
+  <div class="section-heading reveal multiverse-heading">
+    <span class="eyebrow">06 / VISIONEXA EVENT PORTAL</span>
+    <h2>Choose your <span>universe.</span></h2>
+    <p>Seven worlds. Different challenges. One multiverse. Select a rotating world to discover its events and open registration.</p>
+    <div class="universe-status"><span class="status-pulse"></span> MULTIVERSE ONLINE <span class="status-divider">/</span> 07 DIMENSIONS DETECTED</div>
+  </div>
+  <div class="universe-stage" aria-label="Interactive seven-universe selection">
+    <div class="universe-orbit orbit-one"></div><div class="universe-orbit orbit-two"></div>
+    <div class="universe-core"><span>VX</span><small>404</small></div>
+    <button class="universe-node node-tech" data-universe="tech" aria-label="Explore Techverse"><span class="node-model" id="canvas-univ-1"></span><span class="node-label"><b>TECHVERSE</b><small>01 / INNOVATION</small></span></button>
+    <button class="universe-node node-game" data-universe="game" aria-label="Explore Gameverse"><span class="node-model" id="canvas-univ-2"></span><span class="node-label"><b>GAMEVERSE</b><small>02 / PLAY</small></span></button>
+    <button class="universe-node node-vibe" data-universe="vibe" aria-label="Explore Vibeverse"><span class="node-model" id="canvas-univ-3"></span><span class="node-label"><b>VIBEVERSE</b><small>03 / EXPRESSION</small></span></button>
+    <button class="universe-node node-ai" data-universe="ai" aria-label="Explore AIverse"><span class="node-model" id="canvas-univ-4"></span><span class="node-label"><b>AIVERSE</b><small>04 / INTELLIGENCE</small></span></button>
+    <button class="universe-node node-cyber" data-universe="cyber" aria-label="Explore Cyberverse"><span class="node-model" id="canvas-univ-5"></span><span class="node-label"><b>CYBERVERSE</b><small>05 / DIGITAL SURVIVAL</small></span></button>
+    <button class="universe-node node-human" data-universe="human" aria-label="Explore Humanverse"><span class="node-model" id="canvas-univ-6"></span><span class="node-label"><b>HUMANVERSE</b><small>06 / HUMAN IDENTITY</small></span></button>
+    <button class="universe-node node-meta" data-universe="meta" aria-label="Explore Metaverse"><span class="node-model" id="canvas-univ-7"></span><span class="node-label"><b>METAVERSE</b><small>07 / MIXED REALITY</small></span></button>
+  </div>
+  <p class="universe-hint"><span>↗</span> CLICK ANY ORBITING WORLD TO ACCESS ITS EVENT PORTAL</p>
+</section>
+<!-- Universe events drawer -->
+<aside class="universe-panel" id="universePanel" aria-hidden="true" aria-labelledby="panelTitle">
+  <div class="panel-topline"><span id="panelKicker">UNIVERSE 01 / INNOVATION</span><button type="button" class="panel-close" id="panelClose" aria-label="Close universe panel">×</button></div>
+  <div class="panel-heading"><span class="panel-orb" id="panelOrb">✦</span><div><p>DIMENSION UNLOCKED</p><h3 id="panelTitle">Techverse</h3></div></div>
+  <p class="panel-description" id="panelDescription"></p>
+  <div class="panel-events-heading"><span>AVAILABLE EVENTS</span><span id="panelEventCount">03 EVENTS</span></div>
+  <div class="panel-event-list" id="panelEvents"></div>
+  <button type="button" class="panel-return" id="panelReturn">← RETURN TO THE MULTIVERSE</button>
+</aside>
+<div class="universe-scrim" id="universeScrim"></div>
+<!-- Front-end registration application. Connect a real form endpoint before collecting submissions. -->
+<div class="registration-modal" id="registrationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="registrationTitle">
+  <div class="registration-card">
+    <div class="registration-topline"><span>VISIONEXA // EVENT REGISTRATION</span><button type="button" id="registrationClose" aria-label="Close registration form">×</button></div>
+    <p class="registration-kicker" id="registrationUniverse">TECHVERSE / EVENT 01</p>
+    <h3 id="registrationTitle">Register for the event</h3>
+    <p class="registration-subtitle">Enter your details to prepare your registration application.</p>
+    <form id="eventRegistrationForm">
+      <input type="hidden" id="registrationEvent" name="event" />
+      <label>Full name<input required name="fullName" autocomplete="name" placeholder="Your full name" /></label>
+      <div class="registration-fields"><label>Email address<input required type="email" name="email" autocomplete="email" placeholder="you@example.com" /></label><label>Phone number<input required type="tel" name="phone" autocomplete="tel" pattern="[0-9+() -]{8,18}" placeholder="Contact number" /></label></div>
+      <label>College / Institution<input required name="college" placeholder="Your college name" /></label>
+      <label>Team name <span class="optional-label">(if applicable)</span><input name="teamName" placeholder="Team name or leave blank" /></label>
+      <p class="registration-note">This is the website form interface. Submissions will not be stored or sent until a registration backend or official form link is connected.</p>
+      <button class="registration-submit" type="submit">PREVIEW REGISTRATION ↗</button>
+      <p class="registration-feedback" id="registrationFeedback" role="status"></p>
+    </form>
+  </div>
+</div>
+</main>
+<!-- Chatbot UI -->
+<div class="chatbot-container" id="chatbotContainer">
+<div class="chatbot-header">
+<span>BitCA AI Assistant</span>
+<button class="hover-target" id="closeChatBtn">×</button>
+</div>
+<div class="chatbot-messages" id="chatbotMessages">
+<div class="message bot-message">Welcome to Multiverse 404! I am the BitCA AI. Ask me about our club, Visionexa fests, KC College, or our faculties!</div>
+</div>
+<div class="chatbot-input">
+<input id="chatInput" placeholder="Ask reality a question..." type="text"/>
+<button class="hover-target" id="sendChatBtn">Send</button>
+</div>
+</div>
+<button class="chatbot-toggle hover-target" id="chatbotToggle">💬</button>
+<footer class="footer">
+<div class="footer-content">
+<div>
+<a class="brand footer-brand hover-target" href="#home">
+<span class="logo">B.</span>
+<span>BitCA <small>TECH CLUB</small></span>
+</a>
+<p>Department of Computer Applications<br/>K.C. College · HSNC University</p>
+</div>
+</div>
+<p class="copyright">Reality Not Found. Multiverse 404 © 2026 BitCA v2.4 All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
