@@ -289,7 +289,7 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
       powerPreference: 'high-performance',
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(isSoftwareGl ? 1 : Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(isSoftwareGl ? 1 : Math.min(window.devicePixelRatio, 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.25;
@@ -497,6 +497,11 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
     };
 
     const onMouseMove = (e: MouseEvent) => {
+      if (stateRef.current.selectedUniverse) {
+        setHoveredUniverse(null);
+        setHoverScreenPos(null);
+        return;
+      }
       handlePointerMove(e.clientX, e.clientY);
     };
 
@@ -505,6 +510,11 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
     };
 
     const onClick = (e: MouseEvent) => {
+      // Prevent raycasting when clicking on any interactive UI button or card
+      if ((e.target as HTMLElement)?.closest('button, a, input, select, textarea, .glass-panel-v5, .glass-card-v5, .glass-dock-v5')) {
+        return;
+      }
+
       updatePointer(e.clientX, e.clientY);
       raycaster.setFromCamera(mouseNDC, camera);
 
@@ -664,20 +674,20 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
   }, [handleTravelToUniverse]);
 
   return (
-    <div className="relative w-full h-[780px] md:h-[880px] bg-[#02040b] overflow-hidden select-none border-y border-white/10 shadow-[0_0_120px_rgba(0,0,0,1)_inset]">
+    <div className="relative w-full h-[84vh] min-h-[580px] max-h-[880px] bg-[#02040b] overflow-hidden select-none border-y border-white/10 shadow-[0_0_120px_rgba(0,0,0,1)_inset]">
       {/* 3D WebGL Deep Space Canvas */}
       <div ref={mountRef} className="absolute inset-0 z-0" />
 
       {/* Top Status & Controls Bar */}
-      <div className="absolute top-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
-        <div className="flex items-center gap-3 bg-[#050811]/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 pointer-events-auto shadow-xl">
-          <Sparkles className="w-4 h-4 text-[#55d9f4]" />
-          <div className="flex items-center gap-2">
+      <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex flex-wrap items-center justify-between gap-2.5 pointer-events-none">
+        <div className="flex items-center gap-2.5 sm:gap-3 glass-panel-v5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 pointer-events-auto shadow-xl">
+          <Sparkles className="w-4 h-4 text-[#55d9f4] shrink-0" />
+          <div className="flex items-center gap-2 truncate">
             <span className="font-['DM_Mono'] text-xs font-bold text-white tracking-wider">
               MULTIVERSE 404
             </span>
             <span className="text-white/30 text-xs">/</span>
-            <span className="font-['DM_Mono'] text-[11px] text-white/70">
+            <span className="font-['DM_Mono'] text-[10px] sm:text-[11px] text-white/70 truncate">
               {selectedUniverse
                 ? `${selectedUniverse.name.toUpperCase()} // ${selectedUniverse.astronomicalClass.toUpperCase()}`
                 : 'CENTRAL NEXUS HUB // 7 UNIVERSE DESTINATIONS'}
@@ -690,7 +700,7 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
           {selectedUniverse && (
             <button
               onClick={handleReturnToNexus}
-              className="px-3.5 py-2 rounded-xl bg-[#090e1f]/85 border border-white/15 hover:border-[#55d9f4] text-xs font-['DM_Mono'] text-white font-medium flex items-center gap-1.5 shadow-lg transition-all cursor-pointer"
+              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl glass-card-v5 hover:border-[#55d9f4] text-xs font-['DM_Mono'] text-white font-medium flex items-center gap-1.5 shadow-lg transition-all cursor-pointer"
             >
               <Compass className="w-3.5 h-3.5 text-[#55d9f4]" />
               <span>Nexus Hub</span>
@@ -699,7 +709,7 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
 
           <button
             onClick={handleToggleAudio}
-            className="p-2.5 rounded-xl bg-[#090e1f]/85 border border-white/10 hover:border-[#55d9f4] text-white/80 hover:text-[#55d9f4] transition-all cursor-pointer shadow-lg"
+            className="p-2 sm:p-2.5 rounded-xl glass-card-v5 hover:border-[#55d9f4] text-white/80 hover:text-[#55d9f4] transition-all cursor-pointer shadow-lg"
             title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
@@ -707,7 +717,7 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
 
           <button
             onClick={handleToggleFullscreen}
-            className="p-2.5 rounded-xl bg-[#090e1f]/85 border border-white/10 hover:border-[#55d9f4] text-white/80 hover:text-[#55d9f4] transition-all cursor-pointer shadow-lg"
+            className="p-2 sm:p-2.5 rounded-xl glass-card-v5 hover:border-[#55d9f4] text-white/80 hover:text-[#55d9f4] transition-all cursor-pointer shadow-lg"
             title="Toggle Fullscreen"
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -716,7 +726,7 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
           {onClosePortal && (
             <button
               onClick={onClosePortal}
-              className="px-3.5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-200 text-xs font-['DM_Mono'] font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-200 text-xs font-['DM_Mono'] font-bold flex items-center gap-1.5 transition-all cursor-pointer"
               title="Exit 3D Portal and return to page"
             >
               <LogOut className="w-3.5 h-3.5" />
@@ -726,46 +736,51 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
         </div>
       </div>
 
-      {/* Floating Guidance Banner */}
-      <div className="absolute top-20 left-4 z-10 pointer-events-auto">
-        <div className="bg-[#050811]/80 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 flex items-center gap-3 shadow-xl">
-          <span className="text-xs text-white/70 font-['DM_Mono']">
-            Drag to pan view • Click any galaxy to initiate Catmull-Rom warp flight
-          </span>
+      {/* Floating Guidance Banner (Hidden when universe is selected for clean view) */}
+      {!selectedUniverse && (
+        <div className="hidden sm:block absolute top-16 left-4 z-10 pointer-events-none">
+          <div className="glass-card-v5 px-3.5 py-1.5 rounded-full border border-white/10 flex items-center gap-2 shadow-lg">
+            <span className="text-[11px] text-white/70 font-['DM_Mono']">
+              Drag to rotate camera • Click any celestial body to warp
+            </span>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Destination Selection Dock at Bottom */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 max-w-[95vw] overflow-x-auto p-1.5 bg-[#050811]/85 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center gap-1.5 shadow-2xl pointer-events-auto">
+      {/* Destination Selection Dock at Bottom (Glassy V5 Dock with Liquid Halo Glow & Spring Expansion) */}
+      <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 max-w-[96vw] overflow-x-auto flex-nowrap py-1.5 px-2.5 glass-dock-v5 rounded-2xl flex items-center gap-1.5 scrollbar-none shadow-2xl pointer-events-auto">
         {UNIVERSES.map((univ) => (
           <button
             key={univ.id}
             onClick={() => handleTravelToUniverse(univ)}
             onMouseEnter={() => {
-              setHoveredUniverse(univ);
-              sound.playHover(univ.colorHex % 1000);
+              if (!selectedUniverse) {
+                setHoveredUniverse(univ);
+                sound.playHover(univ.colorHex % 1000);
+              }
             }}
             onMouseLeave={() => setHoveredUniverse(null)}
-            className={`px-3.5 py-2 rounded-xl text-xs font-['DM_Mono'] font-medium transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+            style={{ '--universe-color': univ.colorStr } as React.CSSProperties}
+            className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 py-2 rounded-xl text-xs font-['DM_Mono'] font-medium transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer liquid-dock-pill ${
               selectedUniverse?.id === univ.id
-                ? 'bg-white/20 text-white border border-[#55d9f4] shadow-[0_0_15px_rgba(85,217,244,0.3)]'
+                ? 'bg-white/20 text-white border border-[#55d9f4] shadow-[0_0_20px_rgba(85,217,244,0.4)]'
                 : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
             }`}
           >
             <span
-              className="w-2 h-2 rounded-full"
+              className="w-2.5 h-2.5 rounded-full shrink-0 shadow-sm"
               style={{ backgroundColor: univ.colorStr, boxShadow: `0 0 8px ${univ.colorStr}` }}
             />
-            <span>{univ.name}</span>
+            <span className="font-semibold">{univ.name}</span>
             <span className="text-[10px] text-white/40">{univ.number}</span>
           </button>
         ))}
       </div>
 
-      {/* Hover Inspection Tooltip */}
-      {hoveredUniverse && !isWarping && (
+      {/* Hover Inspection Tooltip (STRICTLY NON-BLOCKING pointer-events-none, SUPPRESSED when universe is selected) */}
+      {hoveredUniverse && !selectedUniverse && !isWarping && (
         <div
-          className="absolute z-30 pointer-events-none transition-all duration-150"
+          className="absolute z-20 pointer-events-none transition-all duration-150 select-none"
           style={{
             left: hoverScreenPos ? Math.min(window.innerWidth - 320, hoverScreenPos.x + 20) : '50%',
             top: hoverScreenPos ? Math.min(window.innerHeight - 240, hoverScreenPos.y + 20) : '40%',
@@ -773,8 +788,8 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
           }}
         >
           <div
-            className="w-72 bg-[#050811]/90 backdrop-blur-xl p-4 rounded-2xl border shadow-2xl animate-in fade-in zoom-in-95"
-            style={{ borderColor: hoveredUniverse.colorStr, boxShadow: `0 0 35px ${hoveredUniverse.glowColor}` }}
+            className="w-72 glass-panel-v5 p-4 rounded-3xl border shadow-2xl animate-in fade-in zoom-in-95 pointer-events-none"
+            style={{ borderColor: `${hoveredUniverse.colorStr}55`, boxShadow: `0 8px 32px 0 rgba(0,0,0,0.5), 0 0 25px ${hoveredUniverse.glowColor}` }}
           >
             <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
               <span className="text-[10px] font-['DM_Mono'] text-white/50 tracking-wider">
@@ -798,15 +813,15 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
               {hoveredUniverse.shortDesc}
             </p>
 
-            <div className="grid grid-cols-2 gap-2 text-[11px] font-['DM_Mono'] bg-white/5 p-2 rounded-lg mb-3">
+            <div className="grid grid-cols-2 gap-2 text-[11px] font-['DM_Mono'] bg-black/40 p-2 rounded-xl mb-3 border border-white/5">
               <div>
-                <span className="text-white/40 block">EVENTS</span>
+                <span className="text-white/40 block text-[9px]">EVENTS</span>
                 <span className="text-[#55d9f4] font-semibold">
                   {hoveredUniverse.events.length} ACTIVE
                 </span>
               </div>
               <div>
-                <span className="text-white/40 block">COORDINATES</span>
+                <span className="text-white/40 block text-[9px]">COORDINATES</span>
                 <span className="text-white font-semibold">
                   [{hoveredUniverse.position.join(', ')}]
                 </span>
@@ -814,39 +829,39 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
             </div>
 
             <div className="flex items-center justify-between text-[11px] font-['DM_Mono'] text-[#55d9f4]">
-              <span>CLICK TO WARP</span>
+              <span>CLICK PLANET TO WARP</span>
               <span className="animate-pulse">→</span>
             </div>
           </div>
         </div>
       )}
 
-      {/* Destination Arrival HUD: Event Explorer Dock */}
+      {/* Destination Arrival HUD: Event Explorer Dock (Elevated to z-40, Liquid Glass, mobile responsive) */}
       {selectedUniverse && !isWarping && (
-        <div className="absolute inset-x-4 bottom-18 z-20 pointer-events-none flex flex-col items-center">
+        <div className="absolute inset-x-2 sm:inset-x-4 bottom-16 sm:bottom-18 z-40 pointer-events-none flex flex-col items-center">
           <div className="w-full max-w-4xl pointer-events-auto">
             {/* Collapse / Expand Toggle */}
-            <div className="flex justify-center mb-2">
+            <div className="flex justify-center mb-1.5">
               <button
                 onClick={() => setDockCollapsed(!dockCollapsed)}
-                className="px-4 py-1 rounded-full bg-[#050811]/85 backdrop-blur-md border border-white/15 text-white/70 hover:text-white font-['DM_Mono'] text-xs flex items-center gap-1.5 shadow-lg transition-all cursor-pointer"
+                className="px-4 py-1.5 rounded-full glass-dock-v5 text-white/80 hover:text-white font-['DM_Mono'] text-xs flex items-center gap-1.5 shadow-lg transition-all cursor-pointer liquid-btn"
               >
                 {dockCollapsed ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                <span>{dockCollapsed ? `Expand ${selectedUniverse.name} Events` : 'Collapse Dock (Cinema Mode)'}</span>
+                <span>{dockCollapsed ? `Expand ${selectedUniverse.name} Events` : 'Collapse Dock (Cinema View)'}</span>
               </button>
             </div>
 
             {!dockCollapsed && (
-              <div className="bg-[#050811]/90 backdrop-blur-2xl p-4 md:p-5 rounded-3xl border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.85)] max-h-[310px] md:max-h-[280px] flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-300">
+              <div className="glass-panel-v5 p-3.5 sm:p-5 rounded-[32px] max-h-[46vh] sm:max-h-[44vh] flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-300 overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.85)] border border-white/15">
                 {/* Header with Universe details & category filter */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/10 mb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 border-b border-white/10 mb-2.5">
                   <div>
                     <div className="flex items-center gap-2">
                       <span
                         className="w-2.5 h-2.5 rounded-full"
                         style={{ backgroundColor: selectedUniverse.colorStr, boxShadow: `0 0 8px ${selectedUniverse.colorStr}` }}
                       />
-                      <h3 className="text-lg font-bold text-white font-['Montserrat']">
+                      <h3 className="text-base sm:text-lg font-bold text-white font-['Montserrat'] apple-heading">
                         {selectedUniverse.name}
                       </h3>
                       <span className="text-[10px] text-white/50 font-['DM_Mono']">
@@ -855,14 +870,14 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
                     {['All', 'Competition', 'Challenge', 'Workshop', 'Exhibition'].map((cat) => (
                       <button
                         key={cat}
                         onClick={() => setEventCategoryFilter(cat)}
-                        className={`px-2.5 py-1 rounded-lg text-[11px] font-['DM_Mono'] transition-all cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-xl text-[10px] sm:text-[11px] font-['DM_Mono'] transition-all cursor-pointer whitespace-nowrap ${
                           eventCategoryFilter === cat
-                            ? 'bg-[#55d9f4] text-[#050811] font-bold shadow-[0_0_10px_rgba(85,217,244,0.4)]'
+                            ? 'bg-[#55d9f4] text-[#050811] font-bold shadow-[0_0_12px_rgba(85,217,244,0.4)]'
                             : 'text-white/60 hover:text-white hover:bg-white/5'
                         }`}
                       >
@@ -872,19 +887,24 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Event list */}
-                <div className="overflow-y-auto pr-1 space-y-2.5">
+                {/* Event list (smooth scrollable with custom liquid scrollbar) */}
+                <div className="overflow-y-auto pr-1 space-y-2.5 liquid-scrollbar">
                   {selectedUniverse.events
                     .filter((e) => eventCategoryFilter === 'All' || e.category === eventCategoryFilter)
                     .map((event) => (
                       <div
                         key={event.id}
-                        className="p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 hover:border-[#55d9f4]/50 transition-all duration-200 group flex flex-col md:flex-row items-start md:items-center justify-between gap-3"
+                        onMouseMove={(e) => {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                          e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                        }}
+                        className="p-3.5 sm:p-4 rounded-3xl glass-card-v5 spotlight-card tilt-card hover:border-[#55d9f4]/50 transition-all duration-200 group flex flex-col md:flex-row items-start md:items-center justify-between gap-3"
                       >
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 mb-1">
                             <span
-                              className="text-[9px] font-['DM_Mono'] px-2 py-0.5 rounded font-bold uppercase"
+                              className="text-[9px] font-['DM_Mono'] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
                               style={{
                                 backgroundColor: `${selectedUniverse.colorStr}22`,
                                 color: selectedUniverse.colorStr,
@@ -898,14 +918,14 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
                             </span>
                           </div>
 
-                          <h4 className="text-sm font-bold text-white font-['Montserrat'] group-hover:text-[#55d9f4] transition-colors">
+                          <h4 className="text-sm sm:text-base font-bold text-white font-['Montserrat'] group-hover:text-[#55d9f4] transition-colors truncate">
                             {event.title}
                           </h4>
-                          <p className="text-xs text-white/60 mt-0.5 line-clamp-1">
+                          <p className="text-xs text-white/60 mt-0.5 line-clamp-1 font-['Plus_Jakarta_Sans']">
                             {event.description}
                           </p>
 
-                          <div className="flex flex-wrap items-center gap-3 text-[10px] font-['DM_Mono'] text-white/50 mt-1.5">
+                          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-[10px] font-['DM_Mono'] text-white/50 mt-1.5">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-3 h-3 text-[#55d9f4]" />
                               {event.schedule}
@@ -927,18 +947,18 @@ export const ThreeUniverseSection: React.FC<ThreeUniverseSectionProps> = ({
                           </div>
                         </div>
 
-                        {/* Event actions */}
-                        <div className="flex items-center gap-2 w-full md:w-auto">
+                        {/* Event actions (Liquid Buttons with Specular Sweep) */}
+                        <div className="flex items-center gap-2 w-full md:w-auto shrink-0 pt-1 md:pt-0 border-t md:border-t-0 border-white/5">
                           <button
                             onClick={() => onOpenEventDetail?.(selectedUniverse, event)}
-                            className="flex-1 md:flex-initial px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-['DM_Mono'] text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                            className="flex-1 md:flex-initial px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-['DM_Mono'] text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 active:scale-95 liquid-btn border border-white/10"
                           >
                             <Info className="w-3 h-3" />
                             <span>Briefing</span>
                           </button>
                           <button
                             onClick={() => onOpenRegister?.(selectedUniverse, event)}
-                            className="flex-1 md:flex-initial px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#55d9f4] to-[#8b7cff] text-[#050811] font-['DM_Mono'] text-xs font-bold transition-all shadow-[0_0_15px_rgba(85,217,244,0.3)] hover:shadow-[0_0_25px_rgba(85,217,244,0.6)] cursor-pointer flex items-center justify-center gap-1.5"
+                            className="flex-1 md:flex-initial px-4 py-2 rounded-xl bg-gradient-to-r from-[#55d9f4] to-[#8b7cff] text-[#050811] font-['DM_Mono'] text-xs font-bold transition-all shadow-[0_0_15px_rgba(85,217,244,0.3)] hover:shadow-[0_0_25px_rgba(85,217,244,0.6)] cursor-pointer flex items-center justify-center gap-1.5 active:scale-95 liquid-btn border border-white/20"
                           >
                             <span>Register</span>
                             <ExternalLink className="w-3.5 h-3.5" />
