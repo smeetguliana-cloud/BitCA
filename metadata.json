@@ -1,6 +1,8 @@
 {
-  "name": "MULTIVERSE 404 — Reality Not Found",
-  "description": "Interactive 3D Multiverse experience for college tech-cultural fest exploring 7 distinct planetary dimensions with cinematic hyperspace warp navigation, real-time procedural shaders, and event registrations.",
+  "name": "Remix MULTIVERSE 404 — Visionexa Seven Universes",
+  "description": "Interactive 3D Universe Exploration portal with cosmic core zoom-out, parallax orbital systems, warp speed transition, and detailed planet event stations.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
