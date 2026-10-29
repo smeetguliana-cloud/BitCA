@@ -1,0 +1,6 @@
+{
+  "name": "MULTIVERSE 404 — Reality Not Found",
+  "description": "Interactive 3D Multiverse experience for college tech-cultural fest exploring 7 distinct planetary dimensions with cinematic hyperspace warp navigation, real-time procedural shaders, and event registrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
